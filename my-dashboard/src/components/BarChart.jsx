@@ -6,12 +6,12 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 
 function BarChart() {
   const data = {
-    labels: ['Jan', 'Feb', 'Mar', 'Apr'],
+    labels: ['May', 'Jun', 'Jul', 'Aug'],
     datasets: [
       {
-        label: 'Sales',
-        data: [12, 19, 3, 5],
-        backgroundColor: '#1976d2',
+        label: 'Revenue',
+        data: [25, 30, 15, 40],
+        backgroundColor: '#4caf50',
       },
     ],
   };
