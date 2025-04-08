@@ -1,6 +1,11 @@
 import { Card, CardContent, Typography } from '@mui/material';
+import PropTypes from 'prop-types';
 
-function InfoCard({ title, value}) {
+// InfoCard.jsx
+// This component displays a card with a title and a value
+// It uses Material-UI's Card component for styling
+
+function InfoCard({ title, value }) {
     return (
         <Card sx={{ minWidth: 150, margin: 1 }}>
             <CardContent>
@@ -10,5 +15,10 @@ function InfoCard({ title, value}) {
         </Card>
     );
 }
+
+InfoCard.propTypes = {
+    title: PropTypes.string.isRequired,
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+};
 
 export default InfoCard;
