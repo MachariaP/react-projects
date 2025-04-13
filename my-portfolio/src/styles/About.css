@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
+@import url('../theme.css');
 
 /* ==========================================================================
    General Reset - Kept minimal as theme.css handles most
@@ -275,15 +276,15 @@ html {
     background: var(--section-bg); /* Lighten on hover */
 }
 
-.skill-card i {
-    font-size: clamp(2.2rem, 5.5vw, 3rem); /* Larger icons */
-    color: var(--primary);
-    margin-bottom: 1.2rem;
-    transition: transform 0.4s ease;
+.skill-card svg { /* Target the SVG icons */
+    font-size: clamp(2.5rem, 6vw, 3.5rem); /* Adjust size */
+    margin-bottom: 1rem; /* Adjust spacing */
+    color: var(--primary); /* Ensure they use your primary color */
+    transition: transform 0.4s ease; /* Keep the hover transition */
 }
 
-.skill-card:hover i {
-    transform: scale(1.15); /* Icon grows on hover */
+.skill-card:hover svg {
+    transform: scale(1.2); /* Adjust hover scale */
 }
 
 .skill-card h3 {
@@ -357,7 +358,7 @@ html {
     .skill-card {
         padding: 1.2rem;
     }
-    .skill-card i {
+    .skill-card svg {
         font-size: clamp(1.8rem, 4.5vw, 2.5rem);
     }
     .skill-card h3 {

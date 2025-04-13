@@ -1,5 +1,8 @@
 import React from 'react';
-import '../styles/About.css'; // Import your CSS file for styling
+import '../styles/About.css';
+import { FaPython, FaHtml5, FaCss3Alt, FaDatabase, FaGitAlt, FaLinux } from 'react-icons/fa'; // Font Awesome for common icons
+import { SiDjango } from 'react-icons/si'; // Simple Icons for Django
+import { AiOutlineApi } from 'react-icons/ai'; // Ant Design Icons for REST APIs
 
 function About() {
   return (
@@ -32,35 +35,35 @@ function About() {
         <h1>My <span>Skills</span></h1>
         <div className="skills-grid">
           <div className="skill-card" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="100">
-            <i className="fab fa-python"></i>
+            <FaPython />
             <h3>Python</h3>
           </div>
           <div className="skill-card" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="200">
-            <i className="fab fa-html5"></i>
+            <FaHtml5 />
             <h3>HTML</h3>
           </div>
           <div className="skill-card" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="300">
-            <i className="fab fa-css3-alt"></i>
+            <FaCss3Alt />
             <h3>CSS</h3>
           </div>
           <div className="skill-card" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="400">
-            <i className="fas fa-database"></i>
+            <FaDatabase />
             <h3>Databases</h3>
           </div>
           <div className="skill-card" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="500">
-            <i className="fab fa-git-alt"></i>
+            <FaGitAlt />
             <h3>Git</h3>
           </div>
           <div className="skill-card" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="600">
-            <i className="fab fa-linux"></i>
+            <FaLinux />
             <h3>Linux</h3>
           </div>
           <div className="skill-card" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="700">
-            <i className="fas fa-exchange-alt"></i>
+            <AiOutlineApi />
             <h3>REST APIs</h3>
           </div>
           <div className="skill-card" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="800">
-            <i className="fab fa-python"></i>
+            <SiDjango />
             <h3>Django</h3>
           </div>
         </div>

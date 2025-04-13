@@ -3,31 +3,21 @@ import React, { createContext, useState, useEffect } from 'react';
 export const ThemeContext = createContext();
 
 export function ThemeProvider({ children }) {
-  const [theme, setTheme] = useState('light');
-  const [bgColor, setBgColor] = useState('default');
-
-  useEffect(() => {
-    const savedTheme = localStorage.getItem('theme');
-    const savedBgColor = localStorage.getItem('bgColor');
-    if (savedTheme) setTheme(savedTheme);
-    if (savedBgColor) setBgColor(savedBgColor);
-  }, []);
+  const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'light');
+  const [bgColor, setBgColor] = useState(() => localStorage.getItem('bgColor') || 'default');
 
   useEffect(() => {
     localStorage.setItem('theme', theme);
-    document.documentElement.setAttribute('data-theme', theme);
-  }, [theme]);
-
-  useEffect(() => {
     localStorage.setItem('bgColor', bgColor);
+    document.documentElement.setAttribute('data-theme', theme);
     document.documentElement.setAttribute('data-bg', bgColor);
-  }, [bgColor]);
+  }, [theme, bgColor]);
 
   const toggleTheme = () => {
-    setTheme(prevTheme => (prevTheme === 'light' ? 'dark' : 'light'));
+    setTheme(prev => (prev === 'light' ? 'dark' : 'light'));
   };
 
-  const changeBackground = (color) => {
+  const changeBackground = color => {
     setBgColor(color);
   };
 

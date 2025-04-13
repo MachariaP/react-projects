@@ -1,14 +1,20 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ThemeContext } from '../../ThemeContext';
 import './NavBar.css';
 
 function NavBar() {
-  const { toggleTheme, changeBackground } = useContext(ThemeContext);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
+  const { theme, toggleTheme, bgColor, changeBackground } = useContext(ThemeContext);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isColorMenuOpen, setIsColorMenuOpen] = useState(false);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
+    if (isColorMenuOpen) setIsColorMenuOpen(false);
+  };
+
+  const toggleColorMenu = () => {
+    setIsColorMenuOpen(!isColorMenuOpen);
   };
 
   return (
@@ -29,31 +35,71 @@ function NavBar() {
         <i className="fa-solid fa-bars hamburg" aria-label="Open menu" onClick={toggleMobileMenu}></i>
         <div className="mobile-controls">
           <button className="theme-toggle" aria-label="Toggle theme" onClick={toggleTheme}>
-            <i className="fas fa-moon"></i>
+            <i className={`fas ${theme === 'light' ? 'fa-moon' : 'fa-sun'}`}></i>
           </button>
           <div className="color-changer">
-            <button className="color-btn" aria-label="Change background color" onClick={() => setIsMobileMenuOpen(false)}>
+            <button className="color-btn" aria-label="Change background color" onClick={toggleColorMenu}>
               <i className="fas fa-palette"></i>
             </button>
-            <div className="color-menu" id="colorMenu">
-              <span className="color-option" data-color="default" style={{ background: 'linear-gradient(to right, #FFFFFF, #FFF3E0)' }} onClick={() => changeBackground('default')}></span>
-              <span className="color-option" data-color="blue" style={{ background: 'linear-gradient(to right, #FFFFFF, #D6E8F8)' }} onClick={() => changeBackground('blue')}></span>
-              <span className="color-option" data-color="purple" style={{ background: 'linear-gradient(to right, #FFFFFF, #E6DDF5)' }} onClick={() => changeBackground('purple')}></span>
-              <span className="color-option" data-color="green" style={{ background: 'linear-gradient(to right, #FFFFFF, #E0F0E2)' }} onClick={() => changeBackground('green')}></span>
-              <span className="color-option" data-color="orange" style={{ background: 'linear-gradient(to right, #FFFFFF, #FFE8CC)' }} onClick={() => changeBackground('orange')}></span>
+            <div className={`color-menu ${isColorMenuOpen ? 'active' : ''}`} id="colorMenu">
+              <span
+                className={`color-option ${bgColor === 'default' ? 'active' : ''}`}
+                data-color="default"
+                style={{ background: 'linear-gradient(to right, #f8f9fc, #f1f3f9)' }}
+                onClick={() => {
+                  changeBackground('default');
+                  setIsColorMenuOpen(false);
+                }}
+              ></span>
+              <span
+                className={`color-option ${bgColor === 'blue' ? 'active' : ''}`}
+                data-color="blue"
+                style={{ background: 'linear-gradient(to right, #f8f9fc, #8ed1fc)' }}
+                onClick={() => {
+                  changeBackground('blue');
+                  setIsColorMenuOpen(false);
+                }}
+              ></span>
+              <span
+                className={`color-option ${bgColor === 'purple' ? 'active' : ''}`}
+                data-color="purple"
+                style={{ background: 'linear-gradient(to right, #f8f9fc, #d8b4fe)' }}
+                onClick={() => {
+                  changeBackground('purple');
+                  setIsColorMenuOpen(false);
+                }}
+              ></span>
+              <span
+                className={`color-option ${bgColor === 'green' ? 'active' : ''}`}
+                data-color="green"
+                style={{ background: 'linear-gradient(to right, #f8f9fc, #7bdcb5)' }}
+                onClick={() => {
+                  changeBackground('green');
+                  setIsColorMenuOpen(false);
+                }}
+              ></span>
+              <span
+                className={`color-option ${bgColor === 'orange' ? 'active' : ''}`}
+                data-color="orange"
+                style={{ background: 'linear-gradient(to right, #f8f9fc, #fed7aa)' }}
+                onClick={() => {
+                  changeBackground('orange');
+                  setIsColorMenuOpen(false);
+                }}
+              ></span>
             </div>
           </div>
         </div>
       </div>
       <div className={`dropdown ${isMobileMenuOpen ? 'active' : ''}`}>
         <div className="links">
-          <Link to="/">Home</Link>
-          <Link to="/about">About</Link>
-          <Link to="/skills">Skills</Link>
-          <Link to="/projects">Projects</Link>
-          <Link to="/blogs">Blogs</Link>
-          <Link to="/mpesa-payment">Mpesa-Payment</Link>
-          <Link to="/contact">Contact Me</Link>
+          <Link to="/" onClick={toggleMobileMenu}>Home</Link>
+          <Link to="/about" onClick={toggleMobileMenu}>About</Link>
+          <Link to="/skills" onClick={toggleMobileMenu}>Skills</Link>
+          <Link to="/projects" onClick={toggleMobileMenu}>Projects</Link>
+          <Link to="/blogs" onClick={toggleMobileMenu}>Blogs</Link>
+          <Link to="/mpesa-payment" onClick={toggleMobileMenu}>Mpesa-Payment</Link>
+          <Link to="/contact" onClick={toggleMobileMenu}>Contact Me</Link>
           <i className="fa-solid fa-xmark cancel" aria-label="Close menu" onClick={toggleMobileMenu}></i>
         </div>
       </div>
