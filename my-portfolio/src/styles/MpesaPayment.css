@@ -1,0 +1,156 @@
+/* ==========================================================================
+   mpesa.css - M-Pesa Page Specific Styles
+   ========================================================================== */
+
+   @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
+
+   /* ==========================================================================
+      M-Pesa Payment Section
+      ========================================================================== */
+   
+   .mpesa-section {
+       max-width: 1200px;
+       margin: clamp(1.5rem, 3vw, 2rem) auto;
+       padding: clamp(1.5rem, 3vw, 3rem) 1rem;
+       background: #FFFFFF; /* M-Pesa white base */
+       border-radius: 10px;
+       box-shadow: var(--box-shadow);
+       text-align: center;
+       color: var(--text-color);
+       border-top: 5px solid #00A859; /* M-Pesa green accent */
+   }
+   
+   .mpesa-header {
+       margin-bottom: 2rem;
+   }
+   
+   .mpesa-logo {
+       width: clamp(100px, 20vw, 200px);
+       height: auto;
+       margin-bottom: 1rem;
+   }
+   
+   .mpesa-section h1 {
+       font-size: clamp(1.5rem, 4vw, 3rem);
+       color: #00A859; /* M-Pesa green */
+       font-weight: 700;
+   }
+   
+   .mpesa-section h1 span {
+       color: #FF6200; /* M-Pesa orange accent */
+       text-shadow: 0 0 10px rgba(255, 98, 0, 0.5);
+   }
+   
+   .mpesa-section p {
+       font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+   }
+   
+   .mpesa-container {
+       display: flex;
+       justify-content: space-between;
+       gap: clamp(1rem, 2vw, 2rem);
+       flex-wrap: wrap;
+   }
+   
+   .payment-form, .payment-preview {
+       flex: 1;
+       min-width: 300px;
+       background: #F5F6F5; /* M-Pesa light gray */
+       padding: clamp(1rem, 2vw, 2rem);
+       border-radius: 8px;
+       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+   }
+   
+   .payment-form h2, .payment-preview h2 {
+       font-size: clamp(1.2rem, 3vw, 1.5rem);
+       color: #00A859;
+       margin-bottom: 1rem;
+       font-weight: 600;
+   }
+   
+   .payment-form .form-group {
+       margin-bottom: 1rem;
+       text-align: left;
+   }
+   
+   .payment-form label {
+       display: block;
+       font-size: clamp(0.9rem, 2vw, 1rem);
+       color: #333333;
+       margin-bottom: 0.5rem;
+   }
+   
+   .payment-form input {
+       width: 100%;
+       padding: clamp(0.5rem, 1vw, 0.75rem);
+       font-size: clamp(0.9rem, 2vw, 1rem);
+       border: 2px solid #00A859;
+       border-radius: 5px;
+       outline: none;
+       background: #FFFFFF;
+       color: #333333;
+       transition: border-color var(--transition);
+   }
+   
+   .payment-form input:focus {
+       border-color: #FF6200; /* M-Pesa orange */
+   }
+   
+   .payment-form .pay-btn {
+       width: 100%;
+       padding: clamp(0.75rem, 1.5vw, 1rem);
+       background: #00A859;
+       color: #FFFFFF;
+       border: none;
+       border-radius: 5px;
+       font-size: clamp(1rem, 2vw, 1.2rem);
+       font-weight: 600;
+       cursor: pointer;
+       transition: background var(--transition), transform var(--transition);
+   }
+   
+   .payment-form .pay-btn:hover {
+       background: #FF6200;
+       transform: scale(1.05);
+   }
+   
+   .payment-form .form-note {
+       font-size: clamp(0.8rem, 2vw, 0.9rem);
+       color: var(--text-muted);
+       margin-top: 1rem;
+   }
+   
+   .payment-preview .stk-preview {
+       width: 100%;
+       max-width: clamp(200px, 40vw, 300px);
+       height: auto;
+       border-radius: 8px;
+       margin-bottom: 1rem;
+       border: 2px solid #00A859;
+   }
+   
+   /* ==========================================================================
+      Responsive Design
+      ========================================================================== */
+   
+   @media (max-width: 884px) {
+       .mpesa-section {
+           padding: clamp(1rem, 2vw, 2rem) 1rem;
+       }
+       .mpesa-container {
+           flex-direction: column;
+           align-items: center;
+       }
+   }
+   
+   @media (max-width: 600px) {
+       .mpesa-section h1 {
+           font-size: clamp(1.2rem, 3.5vw, 2rem);
+       }
+       .mpesa-section p {
+           font-size: clamp(0.8rem, 2vw, 1rem);
+       }
+       .payment-form h2, .payment-preview h2 {
+           font-size: clamp(1rem, 2.5vw, 1.2rem);
+       }
+   }

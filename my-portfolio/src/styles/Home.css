@@ -1,0 +1,199 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
+
+/* General Reset - Kept minimal as theme.css handles most */
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+
+html {
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+/* Main Section */
+section {
+    width: 100%;
+    min-height: 90vh;
+    padding: clamp(1rem, 3vw, 2rem);
+}
+
+.main-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: clamp(1rem, 3vw, 2rem);
+}
+
+.main-container .image {
+    width: 100%;
+    max-width: clamp(200px, 40vw, 300px);
+    display: flex;
+    justify-content: center;
+}
+
+.main-container .image img {
+    width: 100%;
+    max-width: clamp(150px, 30vw, 250px);
+    height: auto;
+    border-radius: 50%;
+    border: 4px solid var(--button-bg);
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease;
+}
+
+.main-container .image img:hover {
+    transform: scale(1.05);
+}
+
+.main-container .content {
+    width: 100%;
+    max-width: clamp(300px, 60vw, 600px);
+    text-align: center;
+    padding: 0 1rem;
+}
+
+.content h1 {
+    font-size: clamp(1.5rem, 5vw, 3rem);
+    margin-bottom: 1rem;
+}
+
+.content h1 span {
+    color: var(--button-bg);
+    text-shadow: 0 0 10px var(--button-bg);
+}
+
+.content .typewriter {
+    font-weight: 600;
+    font-size: clamp(1rem, 4vw, 2rem);
+    margin-bottom: 1rem;
+}
+
+.content .typewriter span {
+    color: var(--button-bg);
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    text-shadow: 0 0 5px var(--button-bg);
+    position: relative;
+}
+
+.typewriter span::before {
+    content: "Developer";
+    animation: words 15s infinite;
+}
+
+.typewriter span::after {
+    content: "";
+    position: absolute;
+    width: calc(100% + 8px);
+    height: 100%;
+    border-left: 3px solid var(--text-color);
+    animation: cursor 0.6s linear infinite;
+}
+
+@keyframes cursor {
+    to {
+        border-left: 3px solid var(--accent);
+    }
+}
+
+@keyframes words {
+    0%, 33% {
+        content: "Developer";
+    }
+    34%, 66% {
+        content: "Designer";
+    }
+    67%, 100% {
+        content: "Problem Solver";
+    }
+}
+
+.content p {
+    font-size: clamp(0.9rem, 2.5vw, 1rem);
+    line-height: 1.6;
+    margin: 1rem 0;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.social-links i {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: clamp(2rem, 6vw, 3rem);
+    height: clamp(2rem, 6vw, 3rem);
+    background-color: transparent;
+    border: 0.2rem solid var(--button-bg);
+    border-radius: 50%;
+    color: var(--button-bg);
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    transition: all 0.3s ease;
+}
+
+.social-links i:hover {
+    transform: scale(1.3);
+    color: white;
+    background-color: var(--button-bg);
+    filter: drop-shadow(0 0 10px var(--button-bg));
+}
+
+.content .btn {
+    display: flex;
+    justify-content: center;
+}
+
+.content button {
+    width: clamp(120px, 40vw, 200px);
+    height: clamp(40px, 6vh, 60px);
+    background-color: var(--button-bg);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: clamp(0.9rem, 2.5vw, 1rem);
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.content button:hover {
+    transform: scale(1.1);
+    color: var(--button-bg);
+    border: 2px solid var(--button-bg);
+    background-color: transparent;
+    box-shadow: 0 0 40px var(--button-bg);
+}
+
+/* Responsive Design */
+@media (max-width: 884px) {
+    .main-container {
+        flex-direction: column;
+        padding: 1rem;
+    }
+    .main-container .image {
+        order: -1;
+    }
+}
+
+@media (max-width: 600px) {
+    section {
+        padding: 1rem 0.5rem;
+    }
+    .content h1 {
+        font-size: clamp(1.2rem, 4vw, 2rem);
+    }
+    .content .typewriter {
+        font-size: clamp(0.9rem, 3vw, 1.5rem);
+    }
+    .content .typewriter span {
+        font-size: clamp(1.2rem, 3.5vw, 2rem);
+    }
+}

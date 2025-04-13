@@ -1,0 +1,145 @@
+/* ==========================================================================
+   Global Reset
+   ========================================================================== */
+   * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Ensures no horizontal scrolling and smooth scrolling for anchor links */
+html {
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+/* Base body styles, including font family and line height for readability */
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    background: var(--background-gradient);
+    color: var(--text-color);
+}
+
+/* ==========================================================================
+   Theme Variables
+   ========================================================================== */
+
+/* Light theme variables, defining colors and styles for default view */
+[data-theme="light"] {
+    --text-color: #333333;
+    --primary: #00A859; /* M-Pesa green, consistent with your branding */
+    --accent: #6d4300; /* Earthy brown for contrast */
+    --nav-bg: rgba(255, 255, 255, 0.95); /* Slightly opaque white for navigation */
+    --footer-bg: #6d4300; /* Brown footer in light mode */
+    --footer-text: #ffffff; /* White text on footer */
+    --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    --transition: 0.3s ease-in-out; /* Smooth transitions for animations */
+}
+
+/* Dark theme variables, defining colors for night mode */
+[data-theme="dark"] {
+    --text-color: #e0e0e0; /* Light gray for readability in dark mode */
+    --primary: #00A859; /* Same as light for consistency */
+    --accent: #ffd7a3; /* Lighter brown for contrast in dark mode */
+    --nav-bg: rgba(40, 40, 40, 0.95); /* Dark opaque navigation background */
+    --footer-bg: #333333; /* Dark gray footer */
+    --footer-text: #e0e0e0; /* Light gray text on footer */
+    --box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1); /* Light shadow for dark mode */
+    --transition: 0.3s ease-in-out; /* Consistent transition timing */
+}
+
+/* ==========================================================================
+   Background Gradients
+   ========================================================================== */
+
+/* Default background gradient, matching your original design */
+[data-bg="default"] {
+    --background-gradient: linear-gradient(to right, #FFFFFF, #FFF3E0);
+}
+
+/* Blue background gradient for color changer option */
+[data-bg="blue"] {
+    --background-gradient: linear-gradient(to right, #FFFFFF, #D6E8F8);
+}
+
+/* Purple background gradient */
+[data-bg="purple"] {
+    --background-gradient: linear-gradient(to right, #FFFFFF, #E6DDF5);
+}
+
+/* Green background gradient */
+[data-bg="green"] {
+    --background-gradient: linear-gradient(to right, #FFFFFF, #E0F0E2);
+}
+
+/* Orange background gradient */
+[data-bg="orange"] {
+    --background-gradient: linear-gradient(to right, #FFFFFF, #FFE8CC);
+}
+
+/* ==========================================================================
+   Global Typography and Links
+   ========================================================================== */
+
+/* Base styles for links, using theme variables for color */
+a {
+    color: var(--primary);
+    text-decoration: none;
+    transition: color var(--transition);
+}
+
+/* Hover effect for links */
+a:hover {
+    text-decoration: underline;
+}
+
+/* Base styles for headings, ensuring hierarchy and spacing */
+h1, h2, h3 {
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+/* Base styles for paragraphs, with responsive font size */
+p {
+    font-size: clamp(0.9rem, 2.5vw, 1rem);
+    margin-bottom: 1rem;
+}
+
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+
+/* Base button styles, using theme variables for colors */
+button {
+    background-color: var(--primary);
+    color: #ffffff;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: background-color var(--transition);
+    border-radius: 5px;
+}
+
+/* Hover effect for buttons, changing to accent color */
+button:hover {
+    background-color: var(--accent);
+}
+
+/* ==========================================================================
+   Responsive Design
+   ========================================================================== */
+
+/* Adjust font size for tablets and smaller screens */
+@media (max-width: 884px) {
+    body {
+        font-size: clamp(0.8rem, 2vw, 1rem);
+    }
+}
+
+/* Further adjust for mobile devices */
+@media (max-width: 600px) {
+    body {
+        font-size: clamp(0.7rem, 1.8vw, 0.9rem);
+    }
+}
