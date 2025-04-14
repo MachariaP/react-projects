@@ -1,74 +1,143 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import '../styles/About.css';
-import { FaPython, FaHtml5, FaCss3Alt, FaDatabase, FaGitAlt, FaLinux } from 'react-icons/fa'; // Font Awesome for common icons
-import { SiDjango } from 'react-icons/si'; // Simple Icons for Django
-import { AiOutlineApi } from 'react-icons/ai'; // Ant Design Icons for REST APIs
+import {
+  FaPython,
+  FaHtml5,
+  FaCss3Alt,
+  FaDatabase,
+  FaGitAlt,
+  FaLinux,
+  FaReact,
+} from 'react-icons/fa';
+import { SiDjango } from 'react-icons/si';
+import { AiOutlineApi } from 'react-icons/ai';
 
 function About() {
+  const [downloadCount, setDownloadCount] = useState(0);
+
+  // Initialize AOS and mock download counter
+  useEffect(() => {
+    AOS.init({ duration: 1000, once: true, offset: 100 });
+
+    // Mock CV download counter (in real app, fetch from API)
+    const mockDownloads = Math.floor(Math.random() * 50) + 10;
+    setDownloadCount(mockDownloads);
+
+    // Cleanup AOS
+    return () => AOS.refresh();
+  }, []);
+
+  // Handle CV download (mock increment)
+  const handleDownload = () => {
+    setDownloadCount((prev) => prev + 1);
+  };
+
+  // Skills array with proficiency levels (0-100)
+  const skills = [
+    { name: 'Python', icon: <FaPython />, level: 90 },
+    { name: 'HTML', icon: <FaHtml5 />, level: 85 },
+    { name: 'CSS', icon: <FaCss3Alt />, level: 80 },
+    { name: 'React', icon: <FaReact />, level: 70 }, // Added React
+    { name: 'Databases', icon: <FaDatabase />, level: 75 },
+    { name: 'Git', icon: <FaGitAlt />, level: 85 },
+    { name: 'Linux', icon: <FaLinux />, level: 70 },
+    { name: 'REST APIs', icon: <AiOutlineApi />, level: 80 },
+    { name: 'Django', icon: <SiDjango />, level: 85 },
+  ];
+
   return (
-    <>
-      <section className="hero-section" data-aos="fade-up" data-aos-duration="1000">
+    <div className="about-page">
+      <section className="hero-section" data-aos="fade-up">
         <div className="hero-content">
-          <img src="/images/profile.jpg" alt="Phinehas Macharia" className="profile-photo" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="200" loading="lazy" />
-          <h1 data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200" title="About Phinehas Macharia">
-            <span className="about-text">About</span> <span>Phinehas Macharia</span>
+          <img
+            src="/images/profile.jpg"
+            alt="Phinehas Macharia, Backend Developer"
+            className="profile-photo"
+            data-aos="zoom-in"
+            data-aos-delay="200"
+            loading="lazy"
+          />
+          <h1 data-aos="fade-left" data-aos-delay="400">
+            <span className="about-text">About</span>{' '}
+            <span>Phinehas Macharia</span>
           </h1>
-          <p className="tagline" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="400">Backend Developer | Web Designer | Problem Solver</p>
-          <a href="/curriculum-vitae.pdf" download className="cta-button" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="600">Download CV</a>
+          <p className="tagline" data-aos="fade-right" data-aos-delay="600">
+            Backend Developer | React Enthusiast | Problem Solver
+          </p>
+          <div className="cta-container" data-aos="zoom-in" data-aos-delay="800">
+            <a
+              href="/curriculum-vitae.pdf"
+              download
+              className="cta-button"
+              onClick={handleDownload}
+              aria-label="Download Phinehas Macharia's CV"
+            >
+              Download CV
+            </a>
+            <span className="download-count">
+              Downloaded {downloadCount} times
+            </span>
+          </div>
         </div>
       </section>
 
-      <section className="bio-section" data-aos="flip-up" data-aos-duration="1000">
-        <h2>My Journey</h2>
+      <section className="bio-section" data-aos="flip-up">
+        <h2 data-aos="zoom-in">My Journey</h2>
         <div className="bio-container">
-          <div className="bio-image">
-            <img src="/images/journey-photo.jpg" alt="My Journey" className="journey-photo" loading="lazy" />
+          <div className="bio-image" data-aos="fade-right" data-aos-delay="200">
+            <img
+              src="/images/journey-photo.jpg"
+              alt="Phinehas Macharia's coding journey"
+              className="journey-photo"
+              loading="lazy"
+            />
           </div>
-          <div className="bio-text">
-            <p>I’m Phinehas Macharia, a results-driven Backend Developer with over 3 years of experience, certified by ALX. I excel at building scalable, high-performance solutions with Python and crafting responsive, user-centric web interfaces using HTML, CSS, and modern frameworks. My tech journey is fueled by a passion for solving complex challenges and delivering projects that make a difference.</p>
-            <p>With 5+ successful projects under my belt, I’m adept at transforming concepts into efficient, impactful applications. Beyond coding, I stay ahead of the curve by diving into emerging tech trends and sharing knowledge through insightful blog posts.</p>
+          <div className="bio-text" data-aos="fade-left" data-aos-delay="400">
+            <p>
+              I’m Phinehas Macharia, a dedicated Backend Developer with over 3
+              years of experience, certified by ALX. I specialize in building
+              scalable, high-performance solutions using Python, Django, and REST
+              APIs, while also crafting dynamic, user-centric interfaces with
+              React, HTML, and CSS.
+            </p>
+            <p>
+              With 5+ successful projects, I thrive on turning complex challenges
+              into elegant solutions. My passion for technology drives me to
+              explore emerging trends, contribute to open-source, and share
+              insights through my blog. Let’s build something impactful together!
+            </p>
           </div>
         </div>
       </section>
 
-      <section className="skills-section" data-aos="fade-up" data-aos-duration="1000">
-        <h1>My <span>Skills</span></h1>
+      <section className="skills-section" data-aos="fade-up">
+        <h1 data-aos="zoom-in">
+          My <span>Skills</span>
+        </h1>
         <div className="skills-grid">
-          <div className="skill-card" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="100">
-            <FaPython />
-            <h3>Python</h3>
-          </div>
-          <div className="skill-card" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="200">
-            <FaHtml5 />
-            <h3>HTML</h3>
-          </div>
-          <div className="skill-card" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="300">
-            <FaCss3Alt />
-            <h3>CSS</h3>
-          </div>
-          <div className="skill-card" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="400">
-            <FaDatabase />
-            <h3>Databases</h3>
-          </div>
-          <div className="skill-card" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="500">
-            <FaGitAlt />
-            <h3>Git</h3>
-          </div>
-          <div className="skill-card" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="600">
-            <FaLinux />
-            <h3>Linux</h3>
-          </div>
-          <div className="skill-card" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="700">
-            <AiOutlineApi />
-            <h3>REST APIs</h3>
-          </div>
-          <div className="skill-card" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="800">
-            <SiDjango />
-            <h3>Django</h3>
-          </div>
+          {skills.map((skill, index) => (
+            <div
+              className="skill-card"
+              key={skill.name}
+              data-aos="zoom-in"
+              data-aos-delay={100 + index * 100}
+              title={`${skill.name}: ${skill.level}% proficiency`}
+            >
+              {skill.icon}
+              <h3>{skill.name}</h3>
+              <div className="progress-bar">
+                <div
+                  className="progress-fill"
+                  style={{ width: `${skill.level}%` }}
+                ></div>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
-    </>
+    </div>
   );
 }
 
