@@ -1,151 +1,270 @@
+/* src/styles/blogs.css */
 /* ==========================================================================
    blogs.css - Blogs Page Specific Styles
    ========================================================================== */
 
-   @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
+   @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
    @import url('../theme.css');
-
+   
+   /* ==========================================================================
+      General
+      ========================================================================== */
+   .blogs-page {
+     max-width: 1280px;
+     margin: 0 auto;
+     padding: 0 clamp(1rem, 3vw, 1.5rem);
+   }
+   
    /* ==========================================================================
       Blogs Section
       ========================================================================== */
-   
    .blogs-section {
-       max-width: 1200px;
-       margin: clamp(1.5rem, 3vw, 2rem) auto;
-       padding: clamp(1.5rem, 3vw, 3rem) 1rem;
-       background: var(--section-bg);
-       border-radius: 10px;
-       box-shadow: var(--box-shadow);
-       text-align: center;
+     margin: clamp(2rem, 4vw, 3rem) auto;
+     padding: clamp(2rem, 4vw, 3rem) clamp(1rem, 2vw, 1.5rem);
+     background: var(--card-bg);
+     border-radius: 16px;
+     box-shadow: var(--box-shadow);
+     text-align: center;
    }
    
    .blogs-section h1 {
-       font-size: clamp(1.5rem, 4vw, 3rem);
-       color: var(--primary);
-       margin-bottom: 1rem;
-       font-weight: 700;
+     font-size: var(--font-size-h1);
+     font-weight: 700;
+     color: var(--primary);
+     margin-bottom: 1.2rem;
    }
    
    .blogs-section h1 span {
-       color: var(--accent);
-       text-shadow: 0 0 10px var(--accent);
+     background: var(--gradient-bg);
+     -webkit-background-clip: text;
+     background-clip: text;
+     color: transparent;
    }
    
    .blogs-section p {
-       font-size: clamp(0.9rem, 2.5vw, 1.2rem);
-       color: var(--text-color);
-       margin-bottom: 2rem;
+     font-size: clamp(1rem, 2vw, 1.2rem);
+     color: var(--text-color);
+     margin-bottom: 2rem;
+     line-height: var(--line-height);
+   }
+   
+   .blogs-controls {
+     display: flex;
+     flex-wrap: wrap;
+     gap: clamp(1rem, 1.5vw, 1.2rem);
+     margin-bottom: 2rem;
+     justify-content: center;
+   }
+   
+   .search-bar {
+     padding: clamp(0.8rem, 1.5vw, 1rem);
+     border: 2px solid var(--primary);
+     border-radius: 28px;
+     font-size: clamp(0.95rem, 1.8vw, 1rem);
+     width: clamp(220px, 50vw, 320px);
+     background: var(--section-bg);
+     color: var(--text-color);
+     transition: var(--transition);
+   }
+   
+   .search-bar:focus {
+     border-color: var(--accent);
+     box-shadow: 0 0 10px var(--focus-color);
+     outline: none;
+   }
+   
+   .category-filter {
+     display: flex;
+     flex-wrap: wrap;
+     gap: 0.6rem;
+   }
+   
+   .category-btn {
+     padding: clamp(0.6rem, 1vw, 0.8rem) clamp(1rem, 1.5vw, 1.2rem);
+     background: var(--text-muted);
+     color: var(--section-bg);
+     border: none;
+     border-radius: 24px;
+     font-size: clamp(0.9rem, 1.8vw, 0.95rem);
+     cursor: pointer;
+     transition: var(--transition);
+   }
+   
+   .category-btn.active,
+   .category-btn:hover {
+     background: var(--gradient-bg);
+     color: var(--highlight);
+   }
+   
+   .category-btn:focus {
+     outline: 3px solid var(--focus-color);
+     outline-offset: 2px;
    }
    
    .blogs-grid {
-       display: grid;
-       grid-template-columns: repeat(auto-fit, minmax(clamp(250px, 30vw, 300px), 1fr));
-       gap: clamp(1rem, 2vw, 2rem);
+     display: grid;
+     grid-template-columns: repeat(auto-fit, minmax(clamp(300px, 33vw, 360px), 1fr));
+     gap: clamp(1.5rem, 2.5vw, 2rem);
    }
    
    .blog-card {
-       padding: clamp(1rem, 2vw, 2rem);
-       background: var(--card-bg);
-       border-radius: 8px;
-       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-       transition: transform var(--transition), box-shadow var(--transition);
-       text-align: left;
+     padding: clamp(1.5rem, 2.5vw, 2rem);
+     background: var(--section-bg);
+     border-radius: 16px;
+     box-shadow: var(--box-shadow);
+     transition: var(--transition);
+     text-align: left;
    }
    
    .blog-card:hover {
-       transform: translateY(-5px);
-       box-shadow: 0 6px 12px rgba(109, 67, 0, 0.2);
+     transform: translateY(-10px);
+     box-shadow: var(--box-shadow-active);
    }
    
    .blog-card img {
-       width: 100%;
-       height: clamp(120px, 25vw, 200px);
-       object-fit: cover;
-       border-radius: 8px;
-       margin-bottom: 1rem;
+     width: 100%;
+     height: clamp(160px, 28vw, 240px);
+     object-fit: cover;
+     border-radius: 12px;
+     margin-bottom: 1.2rem;
+     border: 1px solid var(--border-color);
    }
    
    .blog-card h2 {
-       font-size: clamp(1.2rem, 3vw, 1.5rem);
-       color: var(--primary);
-       margin-bottom: 0.5rem;
-       font-weight: 600;
+     font-size: var(--font-size-h2);
+     color: var(--primary);
+     margin-bottom: 0.8rem;
+     font-weight: 600;
    }
    
    .blog-card .date {
-       font-size: clamp(0.8rem, 2vw, 0.9rem);
-       color: var(--text-muted);
-       margin-bottom: 0.75rem;
-       font-style: italic;
+     font-size: clamp(0.85rem, 1.8vw, 0.95rem);
+     color: var(--text-muted);
+     margin-bottom: 1rem;
+     font-style: italic;
    }
    
    .blog-card p {
-       font-size: clamp(0.9rem, 2vw, 1rem);
-       color: var(--text-color);
-       margin-bottom: 1rem;
-       line-height: 1.6;
+     font-size: clamp(0.95rem, 1.8vw, 1rem);
+     color: var(--text-color);
+     margin-bottom: 1.2rem;
+     line-height: var(--line-height);
    }
    
    .blog-card .tags {
-       display: flex;
-       flex-wrap: wrap;
-       gap: 0.5rem;
-       margin-bottom: 1rem;
+     display: flex;
+     flex-wrap: wrap;
+     gap: 0.6rem;
+     margin-bottom: 1.2rem;
    }
    
    .blog-card .tags span {
-       background: var(--primary);
-       color: var(--section-bg);
-       padding: clamp(0.3rem, 1vw, 0.5rem) clamp(0.6rem, 2vw, 1rem);
-       border-radius: 20px;
-       font-size: clamp(0.8rem, 2vw, 0.9rem);
-       font-weight: 500;
+     background: var(--primary);
+     color: var(--highlight);
+     padding: clamp(0.4rem, 1vw, 0.6rem) clamp(0.8rem, 1.5vw, 1rem);
+     border-radius: 20px;
+     font-size: clamp(0.85rem, 1.8vw, 0.9rem);
+     font-weight: 500;
    }
    
    .blog-card .read-more {
-       display: inline-flex;
-       align-items: center;
-       gap: 0.5rem;
-       padding: clamp(0.4rem, 1vw, 0.5rem) clamp(0.8rem, 2vw, 1rem);
-       background-color: var(--primary);
-       color: var(--section-bg);
-       border-radius: 5px;
-       text-decoration: none;
-       font-weight: 600;
-       font-size: clamp(0.9rem, 2vw, 1rem);
-       transition: var(--transition);
+     display: inline-flex;
+     align-items: center;
+     gap: 0.5rem;
+     padding: clamp(0.6rem, 1.2vw, 0.8rem) clamp(1rem, 1.8vw, 1.2rem);
+     background: var(--button-bg);
+     color: var(--highlight);
+     border-radius: 24px;
+     text-decoration: none;
+     font-weight: 600;
+     font-size: clamp(0.9rem, 1.8vw, 0.95rem);
+     transition: var(--transition);
    }
    
    .blog-card .read-more:hover {
-       background-color: transparent;
-       color: var(--primary);
-       border: 2px solid var(--primary);
+     background: var(--gradient-bg);
+   }
+   
+   .blog-card .read-more:focus {
+     outline: 3px solid var(--focus-color);
+     outline-offset: 2px;
+   }
+   
+   .no-results {
+     font-size: clamp(1rem, 2vw, 1.1rem);
+     color: var(--text-muted);
+     text-align: center;
+     padding: 2rem;
    }
    
    /* ==========================================================================
       Responsive Design
       ========================================================================== */
-   
    @media (max-width: 884px) {
-       .blogs-section {
-           padding: clamp(1rem, 2vw, 2rem) 1rem;
-       }
-       .blogs-grid {
-           grid-template-columns: 1fr;
-       }
-       .blog-card {
-           text-align: center;
-       }
+     .blogs-section {
+       padding: clamp(1.5rem, 3vw, 2rem) clamp(0.8rem, 2vw, 1rem);
+     }
+   
+     .blogs-grid {
+       grid-template-columns: 1fr;
+     }
+   
+     .blog-card {
+       text-align: left;
+     }
+   
+     .blogs-controls {
+       flex-direction: column;
+       align-items: center;
+     }
+   
+     .search-bar {
+       width: 100%;
+     }
    }
    
    @media (max-width: 600px) {
-       .blogs-section h1 {
-           font-size: clamp(1.2rem, 3.5vw, 2rem);
-       }
-       .blogs-section p {
-           font-size: clamp(0.8rem, 2vw, 1rem);
-       }
-       .blog-card h2 {
-           font-size: clamp(1rem, 2.5vw, 1.2rem);
-       }
+     .blogs-section h1 {
+       font-size: clamp(1.8rem, 4vw, 2.5rem);
+     }
+   
+     .blogs-section p {
+       font-size: clamp(0.9rem, 1.8vw, 1rem);
+     }
+   
+     .blog-card h2 {
+       font-size: clamp(1.3rem, 3vw, 1.6rem);
+     }
+   
+     .blog-card img {
+       height: clamp(140px, 25vw, 200px);
+     }
+   
+     .category-btn {
+       padding: clamp(0.5rem, 1vw, 0.7rem) clamp(0.8rem, 1.5vw, 1rem);
+       font-size: clamp(0.85rem, 1.8vw, 0.9rem);
+     }
+   }
+   
+   /* ==========================================================================
+      Animations
+      ========================================================================== */
+   @keyframes fadeInUp {
+     from {
+       opacity: 0;
+       transform: translateY(20px);
+     }
+     to {
+       opacity: 1;
+       transform: translateY(0);
+     }
+   }
+   
+   .blogs-section,
+   .blog-card {
+     animation: fadeInUp 0.6s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+   }
+   
+   .blog-card {
+     animation-delay: calc(var(--index) * 0.1s);
    }
