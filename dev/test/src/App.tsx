@@ -1,14 +1,14 @@
 import './App.css'
 
-function WelcomeMessage() {
-  return <h1>Welcome to my App!</h1>
-}
-
 function App() {
+  const message = 'Test!'
+
   return (
     <div className='App'>
-      <WelcomeMessage />
-    </div>
+      <h1>{message === 'Hello!' ? 'The message was "Hello!"' : message}
+
+      </h1>
+      </div>
   )
 }
 
