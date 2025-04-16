@@ -294,7 +294,7 @@
    }
    
    .project-card .demo-link {
-     background-color: var(--accent);
+     background-color:#pragma once var(--accent);
      color: var(--section-bg);
    }
    
@@ -456,17 +456,22 @@
    
    .project-modal .modal-links {
      display: flex;
+     flex-wrap: wrap;
      gap: 1.5rem;
      margin-top: 1.5rem;
    }
    
    .project-modal .github-link,
-    프로젝트-modal .demo-link {
+   .project-modal .demo-link,
+   .project-modal .report-link {
      padding: 0.75rem 1.5rem;
      border-radius: 8px;
      text-decoration: none;
      font-weight: 600;
      transition: all var(--transition);
+     display: inline-flex;
+     align-items: center;
+     gap: 0.75rem;
    }
    
    .project-modal .github-link {
@@ -479,8 +484,14 @@
      color: var(--section-bg);
    }
    
+   .project-modal .report-link {
+     background: var(--primary);
+     color: var(--section-bg);
+   }
+   
    .project-modal .github-link:hover,
-   .project-modal .demo-link:hover {
+   .project-modal .demo-link:hover,
+   .project-modal .report-link:hover {
      background: transparent;
      border: 2px solid var(--primary);
      color: var(--primary);
@@ -489,6 +500,13 @@
    .project-modal .demo-link:hover {
      border-color: var(--accent);
      color: var(--accent);
+   }
+   
+   .project-modal .github-link:focus,
+   .project-modal .demo-link:focus,
+   .project-modal .report-link:focus {
+     outline: 3px solid var(--accent);
+     outline-offset: 3px;
    }
    
    .close-btn {
